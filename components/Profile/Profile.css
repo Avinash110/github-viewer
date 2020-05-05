@@ -1,0 +1,16 @@
+.profile {
+	margin-top: 12px;
+	padding: 8px;
+}
+
+.profile .user-label {
+	margin-right: 8px;
+}
+
+.profile .link {
+	color: #fff !important;
+}
+
+.profile .card-block {
+	padding: 15px;
+}

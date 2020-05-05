@@ -10,10 +10,11 @@ if (process.argv.length < 3) {
 const nameToReplace = "$COMPONENTNAME$";
 const template = "import React from 'react';\n\
 import ReactDOM from 'react-dom';\n\
+import './"+nameToReplace+".css';\n\
 \n\
-export default class $COMPONENTNAME$ extends React.Component {\n\
-  constructor() {\n\
-    super();\n\
+export default class "+nameToReplace+" extends React.Component {\n\
+  constructor(props) {\n\
+    super(props);\n\
     this.state = {};\n\
   }\n\
   render() {\n\
@@ -25,12 +26,12 @@ const componentName = voca.titleCase(process.argv[2]);
 
 const dir = path.resolve(__dirname, "components", componentName);
 if (!fs.existsSync()){
-    fs.mkdirSync(dir);
+  fs.mkdirSync(dir);
 
-    fs.writeFileSync(path.resolve(dir, componentName + ".js"), template.replace(nameToReplace, componentName)); 
-    fs.writeFileSync(path.resolve(dir, componentName + ".css"), "");
+  fs.writeFileSync(path.resolve(dir, componentName + ".js"), template.split(nameToReplace).join(componentName)); 
+  fs.writeFileSync(path.resolve(dir, componentName + ".css"), "");
 
-    console.log("Component created !");
+  console.log("Component created !");
 }
 
 else {
