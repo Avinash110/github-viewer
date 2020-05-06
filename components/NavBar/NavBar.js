@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import {Toggle} from "../Toggle/Toggle.js"
+
 export default class NavBar extends React.Component {
     constructor(props) {
         super(props);
@@ -8,14 +10,12 @@ export default class NavBar extends React.Component {
     }
 
     render() {
-        return <nav className="navbar navbar-expand-lg navbar-light bg-light">
-  		<a className="navbar-brand" href="#">Github Viewer</a>
-		  <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-		    <span className="navbar-toggler-icon"></span>
-		  </button>
-
-		  <div className="collapse navbar-collapse" id="navbarSupportedContent">
-		  </div>
+        return <nav className="navbar navbar-expand-lg" style={{justifyContent: "space-between"}}>
+  		    <a className="navbar-brand" href="#">Github Viewer</a>
+          <div style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
+              <label style={{marginRight: "4px"}}>Select Theme </label>
+              <Toggle theme={this.props.theme} toggleTheme={this.props.onThemeChange} />
+          </div>
 		</nav>
     }
 }

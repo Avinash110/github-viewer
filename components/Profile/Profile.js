@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './Profile.css';
 
+import RepoList from '../RepoList/RepoList.js';
+
 export default class Profile extends React.Component {
   constructor(props) {
     super(props);
@@ -30,9 +32,9 @@ export default class Profile extends React.Component {
 			    		<div className="row">
 			    			<div className="col-md-12">
 			    				<ul className="list-group">
-			    					<li className="list-group-item"><strong>Username: {this.props.userData.login}</strong></li>
-			    					<li className="list-group-item"><strong>Email: {this.props.userData.email}</strong></li>
-			    					<li className="list-group-item"><strong>Location: {this.props.userData.location}</strong></li>
+			    					<li className="profile-item list-group-item"><strong>Username: {this.props.userData.login}</strong></li>
+			    					<li className="profile-item list-group-item"><strong>Email: {this.props.userData.email}</strong></li>
+			    					<li className="profile-item list-group-item"><strong>Location: {this.props.userData.location}</strong></li>
 			    				</ul>
 			    			</div>
 			    		</div>
@@ -40,6 +42,10 @@ export default class Profile extends React.Component {
 			    		<a className="link btn btn-primary" target="_blank" href={this.props.userData.html_url}> Visit Profile</a>
 			    	</div>
 			    </div>
+			    <hr/>
+				<RepoList 
+					repos={this.props.userRepoList}
+				/>
 			  </div>
 			</div>
 		</div>
